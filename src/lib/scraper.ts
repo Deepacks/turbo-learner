@@ -13,11 +13,34 @@ class Scraper {
 
   handleScrapeQuestionsRequest(tabId: number) {
     const handleScrapeQuestions = () => {
+      chrome.runtime.sendMessage(chrome.runtime.id, {
+        type: 'RENDER_RESET',
+      })
+
       const questionsMap = new Map<string, string[]>()
 
       const questionsContainer = document.body.getElementsByClassName(
         'bg-white border border-platform-border pb-10',
-      )[0].firstElementChild
+      )?.[0]?.firstElementChild
+
+      if (!questionsContainer) {
+        chrome.runtime.sendMessage(chrome.runtime.id, {
+          type: 'RENDER_CALL',
+          data: {
+            isError: true,
+            message: 'Nessuna domanda rilevata in questa schermata.',
+          },
+        })
+        return
+      }
+
+      chrome.runtime.sendMessage(chrome.runtime.id, {
+        type: 'RENDER_CALL',
+        data: {
+          isError: false,
+          message: 'Leggendo le domande...',
+        },
+      })
 
       let questionDivsArr: HTMLDivElement[] = []
       questionsContainer?.childNodes.forEach((node) => {
@@ -27,7 +50,7 @@ class Scraper {
       })
       questionDivsArr.pop()
 
-      questionDivsArr.forEach((qDiv, index) => {
+      questionDivsArr.forEach((qDiv) => {
         const question = qDiv.firstElementChild!.textContent!
 
         const answersDivArr: HTMLDivElement[] = []

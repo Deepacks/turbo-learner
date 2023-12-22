@@ -7,13 +7,17 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-#tl-extension {
+.tl-extension {
   padding: 1rem;
+}
+
+#tl-extension__body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
+
 #tl-extension__bad-host {
   font-size: 1rem;
   text-align: center;
@@ -23,7 +27,7 @@ body {
 .tl-extension__title {
   margin: 0;
   padding: 0.5rem;
-  font-weight: medium;
+  font-weight: 500;
   text-align: center;
   color: white;
   background-color: #323443;
@@ -40,7 +44,21 @@ body {
   cursor: pointer;
 }
 
+.tl-extension__data p {
+  padding-top: 1rem;
+  margin: 0;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+#tl-extension__data__error {
+  color: red;
+}
+#tl-extension__data__status {
+  color: white;
+}
+
 .tl-extension__hidden {
-  visibility: hidden;
-  display: none;
+  visibility: hidden !important;
+  display: none !important;
 }

@@ -1,5 +1,4 @@
 import $ from 'jquery'
-import axios from 'axios'
 
 class Http {
   constructor() {
@@ -27,7 +26,6 @@ class Http {
         switch (request.type) {
           case 'QUESTIONS_RESOLVE': {
             this.handleQuestionsResolveRequest(request.data.questionsMapArr)
-
             break
           }
         }
