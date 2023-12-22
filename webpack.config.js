@@ -7,6 +7,11 @@ const outputPath = 'dist'
 const entryPoints = {
   main: [
     path.resolve(__dirname, 'src', 'main.ts'),
+
+    path.resolve(__dirname, 'src', 'lib', 'http.ts'),
+    path.resolve(__dirname, 'src', 'lib', 'renderer.ts'),
+    path.resolve(__dirname, 'src', 'lib', 'scraper.ts'),
+
     path.resolve(__dirname, 'css', 'main.css'),
   ],
   background: path.resolve(__dirname, 'src', 'background.ts'),

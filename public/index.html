@@ -8,12 +8,21 @@
   <body>
     <h1 class="tl-extension__title">Turbo Learner</h1>
 
-    <div class="tl-extension">
-      <button type="button" class="tl-extension__btn" id="tl-extension__btn">
-        Trova Domande
-      </button>
+    <div id="tl-extension">
+      <div id="tl-extension__body" class="tl-extension__hidden">
+        <button id="tl-extension__btn" type="button" class="tl-extension__btn">
+          Trova Domande
+        </button>
 
-      <div id="tl-extension__data"></div>
+        <div class="tl-extension__data">
+          <p id="tl-extension__data__status"></p>
+          <p id="tl-extension__data__error"></p>
+        </div>
+      </div>
+
+      <div id="tl-extension__bad-host" class="tl-extension__hidden">
+        Questo plugin funziona solo sull'host di UniPegaso
+      </div>
     </div>
   </body>
 </html>

@@ -7,6 +7,19 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+#tl-extension {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#tl-extension__bad-host {
+  font-size: 1rem;
+  text-align: center;
+  color: white;
+}
+
 .tl-extension__title {
   margin: 0;
   padding: 0.5rem;
@@ -14,14 +27,6 @@ body {
   text-align: center;
   color: white;
   background-color: #323443;
-}
-
-.tl-extension {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .tl-extension__btn {
@@ -33,4 +38,9 @@ body {
   color: #fff;
   font-size: 0.8rem;
   cursor: pointer;
+}
+
+.tl-extension__hidden {
+  visibility: hidden;
+  display: none;
 }

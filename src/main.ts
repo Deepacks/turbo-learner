@@ -1,5 +1,12 @@
 import $ from 'jquery'
 
+// chrome.windows.create({
+//   url: chrome.runtime.getURL('my_page.html'),
+//   type: 'popup',
+//   height: 600,
+//   width: 600,
+// })
+
 class Main {
   constructor() {
     this.init()
@@ -7,20 +14,11 @@ class Main {
 
   init() {
     $(() => {
-      this.resetShownData()
-
-      this.handleLoadQuestions()
-      this.handleData()
+      this.attachEvents()
     })
   }
 
-  resetShownData() {
-    if ($('#tl-extension__data')[0]) {
-      $('#tl-extension__data').empty()
-    }
-  }
-
-  handleLoadQuestions() {
+  attachEvents() {
     $(() => {
       $('#tl-extension__btn').on('click', async () => {
         const tabData = await chrome.tabs.query({
@@ -29,38 +27,21 @@ class Main {
         })
         const tabId = tabData[0].id
 
-        const handleCurrentTab = (tabId: number) => {
-          // const documentHtml = document.body.innerHTML
-          // const context = documentHtml.toString()
-
+        const handleScraperCall = (tabId: number) => {
           chrome.runtime.sendMessage(chrome.runtime.id, {
-            type: 'QUESTIONS_DATA',
-            data: 'Hello',
-            tabId,
+            type: 'QUESTIONS_SCRAPE',
+            data: { tabId },
           })
         }
 
         if (tabId) {
           chrome.scripting.executeScript({
             target: { tabId },
-            func: handleCurrentTab,
+            func: handleScraperCall,
             args: [tabId],
           })
         }
       })
-    })
-  }
-
-  handleData() {
-    chrome.runtime.onMessage.addListener((request, sender) => {
-      if (request && request.type) {
-        switch (request.type) {
-          case 'QUESTIONS_DATA': {
-            $('#tl-extension__data').html(request.data)
-            break
-          }
-        }
-      }
     })
   }
 }
