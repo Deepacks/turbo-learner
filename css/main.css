@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  background: #1b1b23;
+  height: auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.tl-extension__title {
+  margin: 0;
+  padding: 0.5rem;
+  font-weight: medium;
+  text-align: center;
+  color: white;
+  background-color: #323443;
+}
+
+.tl-extension {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tl-extension__btn {
+  padding: 0 0.5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #3559e0;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+}

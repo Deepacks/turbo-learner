@@ -1,0 +1,27 @@
+{
+    "name": "Turbo Learner",
+    "description": "(only for UniPegaso) Make learning faster",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "main.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "index.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    }
+}
